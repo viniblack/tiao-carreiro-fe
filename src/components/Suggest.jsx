@@ -1,6 +1,35 @@
+import { useState } from "react";
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import musicAPI from "../services/musicAPI";
 
 export default function Suggest() {
+  const [url, setUrl] = useState("");
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (newMusic) => musicAPI.createMusic(newMusic),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["musics"]);
+      alert("Música enviada com sucesso!");
+      setUrl("");
+    },
+    onError: () => {
+      alert("Erro ao enviar música.");
+    },
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!url) {
+      alert("Por favor, cole um link do YouTube.");
+      return;
+    }
+
+    mutation.mutate({ youtube_url: url });
+  };
+
   return (
     <Paper
       elevation={3}
@@ -21,7 +50,12 @@ export default function Suggest() {
         Sugerir Nova Música
       </Typography>
 
-      <Box component="form" noValidate autoComplete="off">
+      <Box
+        component="form"
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
         <Box
           sx={{
             display: "flex",
@@ -37,9 +71,11 @@ export default function Suggest() {
             variant="outlined"
             size="small"
             fullWidth
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
             sx={{
               "& .MuiOutlinedInput-root": {
-                borderRadius: 2, // ou 4
+                borderRadius: 2,
                 fontSize: "1rem",
               },
             }}
@@ -47,6 +83,7 @@ export default function Suggest() {
           <Button
             type="submit"
             variant="contained"
+            disabled={mutation.isLoading}
             sx={{
               backgroundColor: "#8B4513",
               color: "white",
@@ -59,7 +96,7 @@ export default function Suggest() {
               textTransform: "capitalize",
             }}
           >
-            Enviar Link
+            {mutation.isLoading ? "Enviando..." : "Enviar Link"}
           </Button>
         </Box>
       </Box>

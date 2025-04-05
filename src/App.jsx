@@ -4,8 +4,19 @@ import Suggest from "./components/Suggest";
 import Ranking from "./components/Ranking";
 
 import { Box } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import musicAPI from "./services/musicAPI";
 
-function App() {
+export default function App() {
+  const {
+    data: rankingData = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["musics"],
+    queryFn: musicAPI.getMusics,
+  });
+
   return (
     <>
       <Header />
@@ -19,10 +30,14 @@ function App() {
         }}
       >
         <Suggest />
-        <Ranking />
+        {isLoading ? (
+          <p>Carregando músicas...</p>
+        ) : error ? (
+          <p>Erro ao carregar o ranking 😢</p>
+        ) : (
+          <Ranking rankingData={rankingData} />
+        )}
       </Box>
     </>
   );
 }
-
-export default App;

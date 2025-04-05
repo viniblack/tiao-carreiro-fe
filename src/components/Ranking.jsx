@@ -1,16 +1,29 @@
 import { Box, Paper, Typography } from "@mui/material";
 
-export default function Suggest() {
-  return (
-    <Box sx={{ width: "100%", maxWidth: "800px" }}>
-      <Typography
-        variant="h6"
-        component="h3"
-        sx={{ color: "#8B4513", fontWeight: "bold", paddingBottom: "1rem" }}
-      >
-        Ranking Atual
-      </Typography>
+export default function Ranking({ rankingData }) {
+  const musicList = rankingData?.musics || [];
 
+  function formatViews(numero) {
+    switch (true) {
+      case numero >= 1_000_000_000:
+        return (numero / 1_000_000_000).toFixed(1).replace(".", ",") + "B";
+      case numero >= 1_000_000:
+        return (numero / 1_000_000).toFixed(1).replace(".", ",") + "M";
+      case numero >= 1_000:
+        return (numero / 1_000).toFixed(1).replace(".", ",") + "K";
+      default:
+        return numero.toString();
+    }
+  }
+
+  const MusicCard = (music, index) => (
+    <a
+      key={music.id}
+      href={`https://www.youtube.com/watch?v=${music.youtube_id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="no-underline"
+    >
       <Paper
         elevation={3}
         sx={{
@@ -37,7 +50,7 @@ export default function Suggest() {
             minWidth: { xs: "30px", sm: "40px" },
           }}
         >
-          1
+          {index + 1}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <Typography
@@ -45,24 +58,25 @@ export default function Suggest() {
             sx={{
               fontSize: { xs: "1.1rem", md: "1.25rem" },
               fontWeight: "bold",
+              cursor: "pointer",
               mb: "0.2rem",
               "&:hover": {
                 color: "#8B4513",
               },
             }}
           >
-            O Mineiro e o Italiano
+            {music.title}
           </Typography>
           <Typography
             component="span"
             sx={{ color: "#666", fontSize: "0.9rem" }}
           >
-            47.7M visualizações
+            {formatViews(music.views)} visualizações
           </Typography>
         </Box>
         <Box
           component="img"
-          src="https://img.youtube.com/vi/lkQaLTnmNFw/hqdefault.jpg"
+          src={music.thumb}
           alt="Thumbnail"
           sx={{
             width: { xs: "100%", sm: "120px" },
@@ -74,6 +88,70 @@ export default function Suggest() {
           }}
         />
       </Paper>
+    </a>
+  );
+
+  const EmptyState = () => (
+    <Paper
+      elevation={3}
+      sx={{
+        backgroundColor: "white",
+        borderRadius: "8px",
+        padding: { xs: "1rem", md: "1.5rem" },
+        flexWrap: { xs: "wrap", sm: "nowrap" },
+        mb: "1rem",
+        display: "flex",
+        alignItems: "center",
+        textAlign: "center",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            fontSize: "3rem",
+            color: "#666",
+            textAlign: "center",
+            mb: ".5rem",
+          }}
+        >
+          🎵
+        </Box>
+        <Typography
+          component="span"
+          sx={{ color: "#666", fontSize: "1.1rem", mb: "1.3rem" }}
+        >
+          Nenhuma música cadastrada ainda
+        </Typography>
+        <Typography
+          component="span"
+          sx={{ color: "#666", fontSize: "0.9rem", mb: "1rem" }}
+        >
+          Seja o primeiro a sugerir uma música usando o formulário acima!
+        </Typography>
+      </Box>
+    </Paper>
+  );
+
+  return (
+    <Box sx={{ width: "100%", maxWidth: "800px" }}>
+      <Typography
+        variant="h6"
+        component="h3"
+        sx={{ color: "#8B4513", fontWeight: "bold", paddingBottom: "1rem" }}
+      >
+        Ranking Atual
+      </Typography>
+
+      {musicList.length > 0
+        ? musicList.map((music, index) => MusicCard(music, index))
+        : EmptyState()}
     </Box>
   );
 }
