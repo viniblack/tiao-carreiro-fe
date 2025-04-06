@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material";
 
-export default function Ranking({ rankingData }) {
+export default function Ranking({ rankingData, currentPage = 1, perPage = 5 }) {
   const musicList = rankingData?.musics || [];
 
   function formatViews(numero) {
@@ -50,7 +50,7 @@ export default function Ranking({ rankingData }) {
             minWidth: { xs: "30px", sm: "40px" },
           }}
         >
-          {index + 1}
+          {(currentPage - 1) * perPage + index + 1}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <Typography

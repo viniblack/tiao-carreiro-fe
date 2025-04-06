@@ -1,8 +1,8 @@
 import apiClient from "../api/apiClient";
 
 const musicAPI = {
-  getMusics: async () => {
-    const response = await apiClient.get("/musics");
+  getMusics: async (page = 1) => {
+    const response = await apiClient.get(`/musics?page=${page}`);
     return response.data;
   },
   createMusic: async (payload) => {
