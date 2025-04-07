@@ -9,14 +9,14 @@ const mockRankingData = {
       title: "Chico Mineiro",
       views: 1200000,
       youtube_id: "abc123",
-      thumb: "https://via.placeholder.com/120x68",
+      thumb: "https://placehold.co/120x68",
     },
     {
       id: "2",
       title: "Pagode em Brasília",
       views: 600000,
       youtube_id: "def456",
-      thumb: "https://via.placeholder.com/120x68",
+      thumb: "https://placehold.co/120x68",
     },
   ],
 };

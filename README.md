@@ -1,17 +1,17 @@
 # Top 5 musicas Tião Carreiro & Pardinho - Frontend
 
-Este é o frontend do projeto **Tião Carreiro**. A aplicação consome dados de uma API externa e apresenta uma interface interativa construída com tecnologias modernas do ecossistema web.
-Veja tambem o backend do projeto:
+Este é o frontend do projeto **Tião Carreiro**. A aplicação consome dados de uma API externa.
+🔗 Confira também o backend do projeto:
 https://github.com/viniblack/tiao-carreiro-be
 
 ## 🚀 Tecnologias Utilizadas
 
 - **React**
 - **Vite**
-- **TypeScript**
 - **Tailwind CSS**
 - **Axios**
 - **React Router DOM**
+- **Vitest**
 
 ## 🧑‍💻 Como rodar o projeto localmente
 
