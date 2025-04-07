@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import musicAPI from "../services/musicAPI";
+import { useAuth } from "../context/AuthContext";
 
 export default function Suggest() {
+  const { token } = useAuth();
   const [url, setUrl] = useState("");
   const queryClient = useQueryClient();
 
@@ -29,6 +31,30 @@ export default function Suggest() {
 
     mutation.mutate({ youtube_url: url });
   };
+
+  if (!token) {
+    return (
+      <Paper
+        elevation={3}
+        sx={{
+          backgroundColor: "white",
+          borderRadius: "8px",
+          padding: "2rem",
+          marginBottom: "2rem",
+          width: "100%",
+          maxWidth: "800px",
+        }}
+      >
+        <Typography
+          variant="h6"
+          component="h3"
+          sx={{ color: "#8B4513", fontWeight: "bold" }}
+        >
+          Faça login para sugerir uma música
+        </Typography>
+      </Paper>
+    );
+  }
 
   return (
     <Paper
