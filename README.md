@@ -1,6 +1,8 @@
 # Top 5 musicas Tião Carreiro & Pardinho - Frontend
 
 Este é o frontend do projeto **Tião Carreiro**. A aplicação consome dados de uma API externa e apresenta uma interface interativa construída com tecnologias modernas do ecossistema web.
+Veja tambem o backend do projeto:
+https://github.com/viniblack/tiao-carreiro-be
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -54,19 +56,23 @@ A aplicação estará disponível em: [http://localhost:5173](http://localhost:5
 tiao-carreiro-fe/
 ├── public/
 ├── src/
-│   ├── api/            # 
-│   ├── assets/         # 
-│   ├── components/     # Componentes reutilizáveis
-│   ├── context/        # 
-│   ├── hooks/          # 
-│   ├── pages/          # Páginas da aplicação
-│   ├── routes/         # 
-│   ├── services/       # Configuração de chamadas HTTP (Axios)
-│   ├── App.tsx         # Componente principal
-│   ├── index.css       # 
-│   └── main.tsx        # Ponto de entrada da aplicação
-├── .env.example        # Exemplo de variáveis de ambiente
+│   ├── api/            
+│   ├── assets/         
+│   ├── components/      
+│   ├── context/        
+│   ├── hooks/          
+│   ├── pages/           
+│   ├── routes/         
+│   ├── services/        
+│   ├── App.tsx          
+│   ├── index.css       
+│   └── main.tsx        
+├── .env.example  
+├── .gitignore
+├── eslint.config.js
+├── index.html     
 ├── package.json
+├── pnpm-lock.yaml
 └── vite.config.ts
 ```
 
