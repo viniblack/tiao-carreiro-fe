@@ -9,6 +9,15 @@ const authAPI = {
     const response = await apiClient.post("/login", payload);
     return response.data;
   },
+  logout: async (token) => {
+    const response = await apiClient.post("/logout", null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  },
 };
 
 export default authAPI;

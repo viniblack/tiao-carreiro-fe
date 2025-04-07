@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import authAPI from "../services/authAPI";
 
 const AuthContext = createContext();
 
@@ -13,13 +14,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch("http://127.0.0.1:8000/api/logout", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-        },
-      });
+      await authAPI.logout(token);
     } catch (err) {
       console.error("Erro ao fazer logout:", err);
     } finally {

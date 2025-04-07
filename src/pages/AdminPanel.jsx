@@ -50,9 +50,8 @@ export default function AdminPanel() {
 
   const handleApprove = async (id) => {
     try {
-      await adminAPI.approving(id); // Chama a API
+      await adminAPI.approving(id);
 
-      // Idealmente você poderia refetchar a query aqui também se estiver usando react-query
       queryClient.invalidateQueries(["musicApproval"]);
     } catch (error) {
       console.error("Erro ao aprovar música:", error);
