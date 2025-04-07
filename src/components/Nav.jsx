@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Nav() {
-  const { token, logout } = useAuth();
-
+  const { token, userInfo, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -25,6 +24,11 @@ export default function Nav() {
           <Button color="inherit" component={Link} to="/">
             Home
           </Button>
+          {userInfo?.user.role === "admin" && (
+            <Button color="inherit" component={Link} to="/admin">
+              Admin
+            </Button>
+          )}
 
           {token ? (
             <Button color="inherit" onClick={handleLogout}>

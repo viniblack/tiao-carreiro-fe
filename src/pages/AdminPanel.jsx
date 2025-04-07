@@ -90,7 +90,7 @@ export default function AdminPanel() {
 
   const openEditModal = (music) => {
     setEditingMusic(music);
-    setEditedUrl(music.youtube_url);
+    setEditedUrl(music.youtube_url || "");
     setEditOpen(true);
   };
 

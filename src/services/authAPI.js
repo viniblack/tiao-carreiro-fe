@@ -1,6 +1,10 @@
 import apiClient from "../api/apiClient";
 
 const authAPI = {
+  getUser: async () => {
+    const response = await apiClient.get("/user");
+    return response.data;
+  },
   register: async (payload) => {
     const response = await apiClient.post("/register", payload);
     return response.data;

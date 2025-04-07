@@ -1,11 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import authAPI from "../services/authAPI";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));
-  const [user, setUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   const login = (token) => {
     localStorage.setItem("authToken", token);
@@ -20,12 +20,28 @@ export const AuthProvider = ({ children }) => {
     } finally {
       localStorage.removeItem("authToken");
       setToken(null);
-      setUser(null);
+      setUserInfo(null);
     }
   };
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (token) {
+        try {
+          const data = await authAPI.getUser();
+          setUserInfo(data);
+        } catch (error) {
+          console.error("Erro ao buscar usuário:", error);
+          logout();
+        }
+      }
+    };
+
+    fetchUser();
+  }, [token]);
+
   return (
-    <AuthContext.Provider value={{ token, login, logout, user, setUser }}>
+    <AuthContext.Provider value={{ token, login, logout, userInfo, setUserInfo }}>
       {children}
     </AuthContext.Provider>
   );

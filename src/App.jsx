@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminPanel from "./pages/AdminPanel";
+import AdminRoute from "./routes/AdminRoute";
 
 export default function App() {
   return (
@@ -16,7 +17,14 @@ export default function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminPanel />
+              </AdminRoute>
+            }
+          />
           <Route
             path="/login"
             element={
