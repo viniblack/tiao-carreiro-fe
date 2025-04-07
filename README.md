@@ -54,11 +54,16 @@ A aplicação estará disponível em: [http://localhost:5173](http://localhost:5
 tiao-carreiro-fe/
 ├── public/
 ├── src/
+│   ├── api/            # 
+│   ├── assets/         # 
 │   ├── components/     # Componentes reutilizáveis
+│   ├── context/        # 
+│   ├── hooks/          # 
 │   ├── pages/          # Páginas da aplicação
+│   ├── routes/         # 
 │   ├── services/       # Configuração de chamadas HTTP (Axios)
-│   ├── router/         # Rotas da aplicação
 │   ├── App.tsx         # Componente principal
+│   ├── index.css       # 
 │   └── main.tsx        # Ponto de entrada da aplicação
 ├── .env.example        # Exemplo de variáveis de ambiente
 ├── package.json
