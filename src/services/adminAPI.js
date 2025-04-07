@@ -2,7 +2,7 @@ import apiClient from "../api/apiClient";
 
 const adminAPI = {
   getApprove: async (page = 1) => {
-    const response = await apiClient.get(`/admin/isApprove?page=${page}`);
+    const response = await apiClient.get(`/admin/pending?page=${page}`);
     return response.data;
   },
   approving: async (id) => {

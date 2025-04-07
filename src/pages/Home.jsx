@@ -49,7 +49,8 @@ export default function App() {
           />
         )}
       </Box>
-      {rankingData.pagination?.totalPages &&
+
+      {rankingData.pagination?.totalPages > 1 &&
         rankingData.pagination?.currentPage && (
           <Box
             sx={{ display: "flex", justifyContent: "center", marginY: "2rem" }}
