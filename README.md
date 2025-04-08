@@ -81,6 +81,14 @@ tiao-carreiro-fe/
 └── vite.config.ts
 ```
 
+## 🧪 Testes
+
+Execute todos os testes da aplicação com:
+
+```bash
+pnpm test
+```
+
 ---
 
 ## 🙌 Contribuições
