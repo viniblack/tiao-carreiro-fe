@@ -1,17 +1,22 @@
-# Top 5 musicas Tião Carreiro & Pardinho - Frontend
+# Projeto Tião Carreiro (Frontend)
 
-Este é o frontend do projeto **Tião Carreiro**. A aplicação consome dados de uma API externa.
-🔗 Confira também o backend do projeto:
-https://github.com/viniblack/tiao-carreiro-be
+Este é o **frontend** do projeto _Tião Carreiro_, uma aplicação web que exibe as músicas mais populares da dupla **Tião Carreiro & Pardinho** e permite que usuários sugiram novos links de vídeos do YouTube.
 
-## 🚀 Tecnologias Utilizadas
+> A aplicação consome dados de uma **API REST** externa e entrega uma experiência moderna, responsiva e intuitiva.
 
-- **React**
-- **Vite**
-- **Tailwind CSS**
-- **Axios**
-- **React Router DOM**
-- **Vitest**
+🔗 Confira também o repositório do [**backend em Laravel**](https://github.com/viniblack/tiao-carreiro-be)
+
+---
+
+## 🧪 Tecnologias & Ferramentas
+
+- ⚛️ **React + Vite**
+- 🎨 **Tailwind CSS** + **Material UI**
+- 🔗 **Axios** para requisições HTTP
+- 🌐 **React Router DOM** para rotas SPA
+- 🧪 **Vitest** para testes automatizados
+  
+---
 
 ## 🧑‍💻 Como rodar o projeto localmente
 
@@ -24,33 +29,33 @@ cd tiao-carreiro-fe
 
 ### 2. Instale as dependências
 
-Certifique-se de ter o **Node.js** (versão 22 ou superior) instalado.
+Certifique-se de ter o **Node.js v20+** e **pnpm** instalado.
 
 ```bash
 pnpm install
 ```
 
-### 3. Configure as variáveis de ambiente
+### 3. Configure o ambiente
 
-Crie um arquivo `.env` na raiz do projeto com a seguinte variável:
+Crie um arquivo `.env` na raiz com:
 
 ```env
 VITE_API_URL=http://127.0.0.1:8000/api/
 ```
 
-> 📌 Substitua a URL pela base da sua API se necessário.
+> 💡 Altere a URL se estiver utilizando outro backend ou domínio.
 
-### 4. Rode o servidor de desenvolvimento
+### 4. Inicie o servidor de desenvolvimento
 
 ```bash
 pnpm run dev
 ```
 
-A aplicação estará disponível em: [http://localhost:5173](http://localhost:5173)
+Acesse via navegador: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 🛠️ Estrutura do Projeto
+## 🧭 Estrutura de Pastas
 
 ```bash
 tiao-carreiro-fe/
@@ -78,16 +83,11 @@ tiao-carreiro-fe/
 
 ---
 
-## 📦 Build para produção
+## 🙌 Contribuições
 
-Se quiser gerar os arquivos otimizados para produção:
+Este projeto foi desenvolvido como parte de um desafio técnico individual.
+Sinta-se à vontade para explorar, clonar ou dar sugestões!
 
-```bash
-pnpm run build
-```
+--- 
 
-E para pré-visualizar o build localmente:
-
-```bash
-pnpm run preview
-```
+Desenvolvido com 💻 por Vinicius — ao som de modão raiz 🎧
